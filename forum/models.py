@@ -13,8 +13,8 @@ class Topic(models.Model):
 
 
 class Message(models.Model):
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='message', verbose_name='Тема')
-    text = models.TextField(verbose_name='Опис')
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='messages', verbose_name='Тема')
+    text = models.TextField(verbose_name='Текст повідомлення')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='messages', verbose_name='Автор')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Створено')
 

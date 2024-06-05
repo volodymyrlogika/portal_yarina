@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from forum import models
-from forum.forms import TopicCreateForm
+from forum.forms import TopicCreateForm, MessageForm
 
 
 class TopicListView(LoginRequiredMixin, ListView):
@@ -44,5 +44,22 @@ class TopicDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('task-list')
 
 
+class TopicDetailView(LoginRequiredMixin, DetailView):
+    model = models.Topic
+    template_name = "forum/topic_detail.html"
+    context_object_name = "topic"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['message_form'] = MessageForm()
+        return context
 
+    def post(self, request, *args, **kwargs):
+        message_form = MessageForm(request.POST)
+        if message_form.is_valid():
+            message = message_form.save(commit=False)
+            message.author = self.request.user
+            message.topic = self.get_object()
+            message.save()
+
+        return redirect('topic-detail', pk=self.get_object().pk)
