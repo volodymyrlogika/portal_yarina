@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+    <a href="{% url 'topic-create'%}" type="button" class="btn btn-outline-dark btn-lg mt-2">Додати тему</a>
+
+    <br>
+
+    <div class="list-group">
+   {% for topic in topics %}
+
+  <a href="" class="list-group-item list-group-item-action " aria-current="true">
+      <div class = 'd-flex justify-content-between'><h5>{{topic.title}}</h5>
+      <span>{{topic.author}}</span>
+      </div>
+
+      <div><span >{{topic.description}}</span>
+      </div>
+  </a>
+    {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
