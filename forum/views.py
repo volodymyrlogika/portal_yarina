@@ -6,11 +6,16 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 from forum import models
 from forum.forms import TopicCreateForm, MessageForm
 
+from forum.models import Message
+
+from django.core.paginator import Paginator
+
 
 class TopicListView(LoginRequiredMixin, ListView):
     model = models.Topic
     context_object_name = "topics"
     template_name = "topics/topic_list.html"
+    paginate_by = 3
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -41,13 +46,14 @@ class TopicUpdateView(LoginRequiredMixin, UpdateView):
 class TopicDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Topic
     template_name = "forum/delete_topic.html"
-    success_url = reverse_lazy('task-list')
+    success_url = reverse_lazy('topic-list')
 
 
 class TopicDetailView(LoginRequiredMixin, DetailView):
     model = models.Topic
     template_name = "forum/topic_detail.html"
     context_object_name = "topic"
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -63,3 +69,5 @@ class TopicDetailView(LoginRequiredMixin, DetailView):
             message.save()
 
         return redirect('topic-detail', pk=self.get_object().pk)
+
+

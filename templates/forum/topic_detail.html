@@ -13,7 +13,11 @@
   <a href="" class="list-group-item list-group-item-action " aria-current="true">
       <div class = 'd-flex justify-content-between'><h5>{{message.author}}</h5>
 
-      <span>{{message.created}}</span>
+
+      <span >{{message.created}}
+      </span>
+
+
       </div>
 
       <div>
@@ -25,11 +29,21 @@
 
     <h5>Ваше повідомлення</h5>
     <form action="" method="post">
+
+<!--<div class="row">-->
+<!--  <div class="col-12">-->
+<!--     {% for page_num in page_obj.paginator.page_range %}-->
+<!--     <a href="?page={{page_num}}" class="display: inline-block">{{page_num}}</a>-->
+<!--     {% endfor %}-->
+<!--  </div>-->
+<!--</div>-->
+
         {% csrf_token %}
         {{message_form.as_div}}
         <button type="submit" class="btn btn-dark">Додати</button>
-    </form>
 
+
+    </form>
 </div>
 
 {% endblock %}
