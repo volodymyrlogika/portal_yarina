@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load custom_tags %}
+<div class="container">
+
+    <h3>{{project.title}}</h3>
+    <p>{{project.text}}</p>
+    <span>{{project.author}}</span>
+    <span>{{project.created}}</span>
+
+<div class="list-group">
+{% for project in projects %}
+        <a href="" class="list-group-item list-group-item-action " aria-current="true">
+    <div class = 'd-flex justify-content-between'><h5>{{project.author}}</h5>
+        <span >{{project.created}}</span>
+    </div>
+
+      <div>
+        <p>{{project.text}}</p>
+          {% if project.file %}
+        {% if project.file.url|endswith:".png" or project.file.url|endswith:".jng" or project.file.url|endswith:".jpeg" or project.file.url|endswith:".gif" %}
+            <img src="{{project.file.url}}" alt="" class="img-fluid" style="max-height: 400px">
+        {% else %}
+            <a href="{{project.file.url}}" target="_blank">Прикріплений файл</a>
+        {% endif %}
+      {% endif %}
+      </div>
+        </a>
+    {% endfor %}
+<!--    </div>-->
+
+<!--    <h5>Ваше повідомлення</h5>-->
+<!--    <form action="" method="post" enctype="multipart/form-data">-->
+
+        {% csrf_token %}
+        {{message_form.as_div}}
+        <button type="submit" class="btn btn-dark">Додати</button>
+
+    </form>
+</div>
+
+{% endblock %}

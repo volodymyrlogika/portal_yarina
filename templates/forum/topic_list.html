@@ -2,8 +2,7 @@
 {% block content %}
 <div class="container">
 
-    <a href="{% url 'topic-create'%}" type="button" class="btn btn-outline-dark btn-lg mt-2">Додати тему</a>
-
+    <a href="{% url 'topic-create'%}" type="button" class="btn btn-outline-dark btn-lg my-3">Додати тему</a>
     <br>
 
     <div class="list-group">
@@ -20,10 +19,15 @@
     {% endfor %}
     </div>
     <div class="row">
-        <div class="col-12">
-            {% for page_num in page_obj.paginator.page_range %}
-            <a href="?page={{page_num}}" class="display: inline-block">{{page_num}}</a>
+        <div class="col-12 my-3">
+            <nav aria-label="Page navigation example">
+  <ul class="pagination">
+   {% for page_num in page_obj.paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="?page={{page_num}}">{{page_num}}</a></li>
             {% endfor %}
+  </ul>
+</nav>
+
         </div>
     </div>
 </div>

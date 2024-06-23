@@ -17,6 +17,7 @@ class Message(models.Model):
     text = models.TextField(verbose_name='Текст повідомлення')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='messages', verbose_name='Автор')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Створено')
+    file = models.FileField(verbose_name='Файл', upload_to='forum_files/', null=True, blank=True)
 
     def __str__(self):
         return self.text

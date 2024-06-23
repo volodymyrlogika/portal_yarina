@@ -14,8 +14,8 @@ from django.core.paginator import Paginator
 class TopicListView(LoginRequiredMixin, ListView):
     model = models.Topic
     context_object_name = "topics"
-    template_name = "topics/topic_list.html"
-    paginate_by = 3
+    template_name = "forum/topic_list.html"
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -61,7 +61,7 @@ class TopicDetailView(LoginRequiredMixin, DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
-        message_form = MessageForm(request.POST)
+        message_form = MessageForm(request.POST, request.FILES)
         if message_form.is_valid():
             message = message_form.save(commit=False)
             message.author = self.request.user

@@ -17,9 +17,6 @@ class TopicCreateForm(forms.ModelForm):
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ['text']
-
-    def __init__(self, *args, **kwargs):
-        super(MessageForm, self).__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': "form-control mb-2"})
+        fields = ['text', 'file']
+        widgets = {'text': forms.Textarea(attrs={'class': 'form-control mb-2'}),
+                   "file": forms.FileInput(attrs={"type":"file", 'class': "form-control mb-2"})}
