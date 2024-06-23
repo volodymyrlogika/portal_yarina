@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html'%}
+{% block content %}
+<div class="container py-5">
+    <h2>Редагування проєкту</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button class="btn btn-dark" type="submit">Зберегти зміни </button>
+    </form>
+</div>
 
-</body>
-</html>
+{% endblock %}

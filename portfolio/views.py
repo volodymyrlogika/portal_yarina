@@ -43,6 +43,7 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Project
     template_name = "portfolio/project_update.html"
     success_url = reverse_lazy('project-list')
+    form_class = ProjectCreateForm
 
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):

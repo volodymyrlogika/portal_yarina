@@ -1,42 +1,33 @@
 {% extends 'base.html'%}
 {% block content %}
 {% load custom_tags %}
-<div class="container">
+<div class="container py-5 ">
 
-    <h3>{{project.title}}</h3>
+    <h2>{{project.title}}</h2>
     <p>{{project.text}}</p>
-    <span>{{project.author}}</span>
-    <span>{{project.created}}</span>
 
-<div class="list-group">
-{% for project in projects %}
-        <a href="" class="list-group-item list-group-item-action " aria-current="true">
-    <div class = 'd-flex justify-content-between'><h5>{{project.author}}</h5>
-        <span >{{project.created}}</span>
-    </div>
-
-      <div>
-        <p>{{project.text}}</p>
-          {% if project.file %}
+{% if project.image %}
+    <div class="my-4"><img src="{{project.image.url}}" alt="" class="img-fluid" style="max-height: 400px"></div>
+{% endif %}
+    {% if project.file %}
         {% if project.file.url|endswith:".png" or project.file.url|endswith:".jng" or project.file.url|endswith:".jpeg" or project.file.url|endswith:".gif" %}
             <img src="{{project.file.url}}" alt="" class="img-fluid" style="max-height: 400px">
         {% else %}
-            <a href="{{project.file.url}}" target="_blank">Прикріплений файл</a>
+            <a class="btn btn-primary disabled me-2" href="{{project.file.url}}" target="_blank">Прикріплений файл</a>
         {% endif %}
       {% endif %}
-      </div>
-        </a>
-    {% endfor %}
-<!--    </div>-->
-
-<!--    <h5>Ваше повідомлення</h5>-->
-<!--    <form action="" method="post" enctype="multipart/form-data">-->
-
-        {% csrf_token %}
-        {{message_form.as_div}}
-        <button type="submit" class="btn btn-dark">Додати</button>
-
-    </form>
+    {% if project.link %}
+        <a class = "btn btn-primary disabled me-2" href="{{project.link}}" target="_blank">Посилання на проєкт</a>
+    {% endif %}
+    <div class="my-3 d-flex justify-content-between">
+    <a href="#">{{project.author}}</a>
+    <span>{{project.created}}</span>
 </div>
-
+{% if project.author == request.user %}
+    <div class="my-3 ">
+        <a class="btn btn-outline-secondary" href="{% url 'project-update' project.pk %}"><i class="bi bi-pencil"></i> Редагувати</a>
+        <a class="btn btn-outline-danger" href="{% url 'project-delete' project.pk %}"><i class="bi bi-trash3"></i> Видалити</a>
+    </div>
+{% endif %}
+</div>
 {% endblock %}
