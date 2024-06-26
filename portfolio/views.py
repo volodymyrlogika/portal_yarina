@@ -5,9 +5,21 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 from portfolio import models
 from portfolio.forms import ProjectCreateForm
+from portfolio.mixins import UserIsOwnerMixin
 
 
-class ProjectListView(LoginRequiredMixin, ListView):
+class AllProjectListView(LoginRequiredMixin, ListView):
+    model = models.Project
+    context_object_name = "projects"
+    template_name = "portfolio/all_project_list.html"
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset
+
+
+class MyPortfolioView(LoginRequiredMixin, ListView):
     model = models.Project
     context_object_name = "projects"
     template_name = "portfolio/project_list.html"
@@ -15,12 +27,9 @@ class ProjectListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.filter(author = self.request.user)
         return queryset
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-    
     
 class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = models.Project
@@ -39,7 +48,7 @@ class ProjectDetailView(LoginRequiredMixin, DetailView):
     context_object_name = "project"
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = models.Project
     template_name = "portfolio/project_update.html"
     success_url = reverse_lazy('project-list')
@@ -50,3 +59,7 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Project
     template_name = "portfolio/project_delete.html"
     success_url = reverse_lazy('project-list')
+
+
+def custom_403_view(request, exception=None):
+    return render(request, "403.html", context={"message": "Немає доступу"}, status=403)

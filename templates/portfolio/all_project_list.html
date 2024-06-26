@@ -1,9 +1,8 @@
 {% extends 'base.html'%}
 {% block content %}
 <div class="container">
-<h1 class="mt-4 mb-3">Моє портфоліо</h1>
-    <a href="{% url 'project-create'%}" type="button" class="btn btn-outline-dark btn-lg my-3">Додати проєкт</a>
-    <br>
+<h1 class="mt-4 mb-3">Усі проєкти</h1>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for project in projects %}
     <div class="col">

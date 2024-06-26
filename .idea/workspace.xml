@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa3c7993-6beb-4875-af84-fc355af3341d" name="Changes" comment="Додала portfolio">
+    <list default="true" id="fa3c7993-6beb-4875-af84-fc355af3341d" name="Changes" comment="Додала видалення та редагування портфоліо">
+      <change afterPath="$PROJECT_DIR$/portfolio/mixins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/403.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/portfolio/all_project_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/portal/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/portfolio/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/portfolio/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/portfolio/project_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/project_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/portfolio/project_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/project_delete.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/portfolio/project_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/project_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/portfolio/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/portfolio/project_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/project_update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -52,18 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;forum__views&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/PycharmProjects/portal/manage.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.file-colors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.manage.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "forum__views",
+    "last_opened_file_path": "C:/Users/Lenovo/PycharmProjects/portal/templates/portfolio",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\PycharmProjects\portal\templates\portfolio" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python">
       <module name="portal" />
@@ -153,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719130005045</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Додала видалення та редагування портфоліо">
+      <option name="closed" value="true" />
+      <created>1719138644977</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719138644977</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,7 +184,8 @@
     <MESSAGE value="Додала TopicListView і TopicCreateView" />
     <MESSAGE value="Додала сторінку topic і додавання коментарів" />
     <MESSAGE value="Додала portfolio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Додала portfolio" />
+    <MESSAGE value="Додала видалення та редагування портфоліо" />
+    <option name="LAST_COMMIT_MESSAGE" value="Додала видалення та редагування портфоліо" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

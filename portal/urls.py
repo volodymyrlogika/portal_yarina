@@ -19,9 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from django.urls import path, include
-
+from django.conf.urls import handler403
 from portal import settings
+from portfolio.views import custom_403_view
 
+handler403 = custom_403_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("accounts.urls")),
